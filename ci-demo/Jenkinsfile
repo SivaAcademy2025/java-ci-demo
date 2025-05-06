@@ -11,7 +11,10 @@ pipeline {
         }
         stage('Build with Maven') {
             steps {
-                sh 'mvn clean install'
+                // Change to the ci-demo directory before running Maven
+                dir('ci-demo') {
+                    sh 'mvn clean install'
+                }
             }
         }
         stage('Test') {
